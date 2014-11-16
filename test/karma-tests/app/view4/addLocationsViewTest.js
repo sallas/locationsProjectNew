@@ -5,22 +5,30 @@ describe('myAppRename.addLocationsView AddLocationCtrl', function () {
     var scope, ctrl, httpBackendMock;
     beforeEach(module('myAppRename.addLocationsView'));
 
-    beforeEach(inject(function ($rootScope, $controller,  $httpBackend) {
+    beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
         httpBackendMock = $httpBackend;
         scope = $rootScope.$new();
         ctrl = $controller('AddLocationsCtrl', {$scope: scope});
     }));
 
-    it('should exist', function() {
+    it('should exist', function () {
         expect(ctrl).toBeDefined();
     });
 
-    it('should exist', function() {
+    it('should exist', function () {
         var location = {location: "new york"};
         httpBackendMock.expectPOST('/api/location', location).respond(200, location);
         scope.addLocation(location);
         httpBackendMock.flush();
         expect(scope.data).toEqual(location);
+    });
+
+    it('should set error', function () {
+        var error = "error";
+        httpBackendMock.expectPOST('/api/location', "garbage").respond(404, error);
+        scope.addLocation("garbage");
+        httpBackendMock.flush();
+        expect(scope.error).toEqual(error);
     });
 
 });

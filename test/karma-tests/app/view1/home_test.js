@@ -1,16 +1,15 @@
 'use strict';
 
-describe('myAppRename.home module', function() {
+describe('myAppRename.home module', function () {
 
-  beforeEach(module('myAppRename.home'));
+    beforeEach(module('myAppRename.home'));
 
-  describe('home controller', function(){
+    describe('home controller', function () {
 
-    it('should ....', inject(function($controller) {
-      //spec body
-      var homeCtrl =$controller('HomeCtrl');
-      expect(homeCtrl).toBeDefined();
-    }));
+        it('should exist', inject(function ($controller) {
+            var homeCtrl = $controller('HomeCtrl');
+            expect(homeCtrl).toBeDefined();
+        }));
 
-  });
+    });
 });

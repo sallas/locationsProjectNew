@@ -1,7 +1,22 @@
-<p>This is the partial for view 3.</p>
-<p>Data is fetched from a REST service, connected to MongoDB </p>
 <ul>
   <p style="color: red">{{error}}</p>
-  <li ng-repeat="user in users"> {{user.userName}} {{user.email}} </li>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Rating</th>
+        <th>Country</th>
+        <th>City</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="location in locations">
+        <td>{{location.Name}}</td>
+        <td>{{location.Rating}}</td>
+        <td>{{location.country}}</td>
+        <td>{{location.cty}}</td>
+      </tr>
+    </tbody>
+  </table>
 </ul>
 </p>

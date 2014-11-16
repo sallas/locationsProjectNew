@@ -8,14 +8,13 @@ angular.module('myAppRename.locationsView', ['ngRoute'])
             controller: 'LocationsCtrl'
         });
     }])
-
     .controller('LocationsCtrl', function ($scope, $http) {
         $http({
             method: 'GET',
-            url: 'api/user'
+            url: 'api/location'
         }).
             success(function (data, status, headers, config) {
-                $scope.users = data;
+                $scope.locations = data;
             }).
             error(function (data, status, headers, config) {
                 $scope.error = data;

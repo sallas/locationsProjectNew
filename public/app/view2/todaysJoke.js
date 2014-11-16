@@ -9,15 +9,8 @@ angular.module('myAppRename.joke', ['ngRoute'])
         });
     }])
 
-    .controller('JokeCtrl', ['$scope', '$http', function ($scope, $http) {
-        $http({
-            method: 'GET',
-            url: 'http://greatjokes.herokuapp.com/joke/random'
-        })
-            .success(function (data, status, headers, config) {
-                $scope.joke = data;
-            })
-            .error(function (data, status, headers, config) {
-                $scope.error = data;
-            });
+    .controller('JokeCtrl', ['$scope', '$http', 'JokeFactory', function ($scope, $http, JokeFactory) {
+        JokeFactory.getJoke(function (joke) {
+            $scope.joke = joke;
+        });
     }]);

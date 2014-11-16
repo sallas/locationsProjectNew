@@ -5,6 +5,12 @@ describe('myAppRename.joke JokeCtrl', function () {
 
         beforeEach(module('myAppRename.joke'));
 
+        beforeEach(module({
+            JokeFactory: {
+                getJoke: function(callback) {callback("A Joke") }
+            }
+        }));
+
         beforeEach(inject(function ($rootScope, $controller, $httpBackend) {
             httpBackend = $httpBackend;
             scope = $rootScope.$new();
@@ -15,12 +21,8 @@ describe('myAppRename.joke JokeCtrl', function () {
             expect(ctrl).toBeDefined();
         });
 
-        it('should exist', function () {
-            var joke = "My programming skills";
-            httpBackend.expectGET('http://greatjokes.herokuapp.com/joke/random').
-                respond(joke);
-            httpBackend.flush();
-            expect(scope.joke).toEqual(joke);
-        });
+        it('should set the joke variable in scope to a random joke', function () {
+            expect(scope.joke).toBe('A Joke');
+        })
     });
 });
