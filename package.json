@@ -29,7 +29,7 @@
   },
   "scripts": {
     "pretestserver": "npm install",
-    "testserver": "node ./bin/www 12345",
+    "testserver": "node ./bin/www 12345 test",
     "postinstall": "bower install",
     "prestart": "npm install",
     "start": "node ./bin/www",
